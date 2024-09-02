@@ -1,0 +1,36 @@
+<div class="modal-content">
+    <div class="modal-header"><div class="time">load</div></div>
+    <div id="batch" style="background-image: url('../images/robo1.webp');"></div>
+    <div class="modal-info">
+        <h4 id="level">XPredification Report</h4>
+        <div class="flo">
+            <p>
+                <span>System Name: </span><br>
+                <span>System Type: </span><br>
+                <span>User Name: </span><br>
+                <span>Model Name: </span><br>
+            </p>
+            <p style="text-transform: capitalize;">
+                XPredification<br>
+                Predict/Classify<br>
+                User<br>
+                <%= model_name %><br>
+            </p>
+        </div>
+    </div>
+    <hr class="divider">
+    <div class="modal-body">
+        <div class="flo" id="feature">
+            <%= feature %>
+        </div>
+        <hr class="divider">
+        <div class="flo" id="result">
+            <%= result %>
+        </div>
+        <hr class="divider">
+        <small class="text-muted form-text">This Report data is machine generated, please always consult with our experts before take any step.</small>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="clear" onclick="route('./');">Back</button>
+    </div>
+</div>

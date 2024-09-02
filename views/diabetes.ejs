@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title version="1.0">XPredification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../public/App.css"/>
+    <link rel="icon" href="../public/logo1500.png"/>
+</head>
+<body>
+    <header id="header">
+        <%= header %>
+    </header>
+    <section id="diabetes" class="workspace diseas">
+        <div class="related-diagnosis">
+            <% if (typeof relatedDiagnosis !== 'undefined'){ %>
+                <ul id="related-diagnosis">
+                    <%= relatedDiagnosis %>
+                </ul>
+            <% } %>
+        </div>
+        <div class="home-body flo">
+            <div class="home-body-left">
+                <!-- <form action="/diabetes/predict" method="get"> -->
+                <form onsubmit="validateForm(event);">
+                    <div class="form-head">Diabetes Diagnosis</div>
+                    <div class="form-body">
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="diabetes-name">Name</label>
+                                <input type="name" class="form-control" id="diabetes-name" placeholder="Enter Pasent Name" name="name" required="true" onkeyup="checkName('diabetes-name');"/>
+                                <small class="form-text text-muted">Enter patient's full name following naming grammar under 25 characters.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="diabetes-age">Age (DOB)</label>
+                                <input type="date" class="form-control" id="diabetes-age" placeholder="Enter Pasent DOB" name="age" required="true" onchange="checkAge('diabetes-age',100,4);"/>
+                                <small class="form-text text-muted">Enter patient's valid birth date; age between 4 to 95 years.</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="diabetes-bp">Blood Pressure</label>
+                                <input type="number" class="form-control" id="diabetes-bp" placeholder="Enter Blood Pressure" name="bp" required="true" onkeyup="checkRange('diabetes-bp',180,70);"/>
+                                <small class="form-text text-muted">Fill Patient's BP measured by doctor; range 70-180 mmHg.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="diabetes-glu">Glucose Level</label>
+                                <input type="number" class="form-control" id="diabetes-glu" placeholder="Enter Glucose Level" name="glu" required="true" onkeyup="checkRange('diabetes-glu',180,80);"/>
+                                <small class="form-text text-muted">Fill Patient's glucose level measured by doctor; range 70-140 mg/dL.</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="diabetes-fru">Frequent Urination</label>
+                                <select class="form-control" id="diabetes-fru" name="fru" required="true" onchange="checkOptions('diabetes-fru');">
+                                    <option selected="true">NO</option>
+                                    <option>YES</option>
+                                </select>
+                                <small class="form-text text-muted">Select by observation if patient urinates frequently as compared to previous.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="diabetes-blv">Blurred Vision</label>
+                                <select class="form-control" id="diabetes-blv" name="blv" required="true" onchange="checkOptions('diabetes-blv');">
+                                    <option selected="true">NO</option>
+                                    <option>YES</option>
+                                </select>
+                                <small class="form-text text-muted">Select by observation if patient has blurred vision as compared to previous.</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="diabetes-sh">Slow Healing</label>
+                                <select class="form-control" id="diabetes-slh" name="slh" required="true" onchange="checkOptions('diabetes-slh');">
+                                    <option selected="true">NO</option>
+                                    <option>YES</option>
+                                </select>
+                                <small class="form-text text-muted">Select by observation if patient heals slowly as compared to previous.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="diabetes-wl">Weight Loss</label>
+                                <select class="form-control" id="diabetes-wl" name="wl" required="true" onchange="checkOptions('diabetes-wl');">
+                                    <option selected="true">NO</option>
+                                    <option>YES</option>
+                                </select>
+                                <small class="form-text text-muted">Select by observation if patient has lost weight recently as compared to previous.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-group condition-btn">
+                        <button class="btn btn-danger" type="reset" onclick="route('/diagnosis');">Abort</button>
+                        <button class="btn btn-info" type="submit">Process</button>
+                    </div>
+                </form>
+            </div>
+            <div class="home-body-right">
+                <div class="image">
+                    <img src="../images/diabetes.png" style="margin-top: 40px;" alt="load"/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="workspace blbg" id="side-menu" onclick="navbar_toggle();"></section>
+    <% if (typeof layout !== 'undefined'){ %>
+        <section class="workspace modal fade" role="dialog" aria-hidden="true" id="output-modal">
+        </section>
+    <% } %>
+</body>
+<script src="../public/App.js"></script>
+<script src="../public/default.min.js"></script>
+<script>
+let models;
+try{
+    const layouts = `<%= layout %>`;
+    const parser = new DOMParser;
+    const htmlDoc = parser.parseFromString(layouts, 'text/html');
+    document.getElementById('output-modal').innerHTML = htmlDoc.body.firstChild.textContent;
+    document.querySelector(".time").textContent = `${(new Date().getDate())<10?'0'+(new Date().getDate()):(new Date().getDate())}/${(new Date().getMonth()+1)<10?'0'+(new Date().getMonth()+1):(new Date().getMonth()+1)}/${(new Date().getFullYear())<10?'0'+(new Date().getFullYear()):(new Date().getFullYear())} ${(new Date().getHours())<10?'0'+(new Date().getHours()):(new Date().getHours())}:${(new Date().getMinutes())<10?'0'+(new Date().getMinutes()):(new Date().getMinutes())}`;
+    document.getElementById('result').innerHTML = document.getElementById('result').textContent;
+    document.getElementById('feature').innerHTML = document.getElementById('feature').textContent;
+    document.getElementById('related-diagnosis').innerHTML = document.getElementById('related-diagnosis').textContent;
+}catch(e){
+    console.log('new error: \n',e);
+}
+try{
+    document.getElementById('related-diagnosis').innerHTML = document.getElementById('related-diagnosis').textContent;
+}catch(e){
+
+}
+function validateForm(event){
+    event.preventDefault();
+    var name = document.getElementById('diabetes-name').value;
+    var age = document.getElementById('diabetes-age').value;
+    var bp = document.getElementById('diabetes-bp').value;
+    var glu = document.getElementById('diabetes-glu').value;
+    var fru = document.getElementById('diabetes-fru').value=='NO'?0:1;
+    var blv = document.getElementById('diabetes-blv').value=='NO'?0:1;
+    var sh = document.getElementById('diabetes-slh').value=='NO'?0:1;
+    var wl = document.getElementById('diabetes-wl').value=='NO'?0:1;
+    if((name, age, bp, glu) != ''){
+        if(
+            system.validUserName(name) && 
+            system.validLimit([4,100],system.dobToage(age)) && 
+            system.validLimit([70,180],bp) && 
+            system.validLimit([80,180],glu) && 
+            system.validOptions([0,1],fru) && 
+            system.validOptions([0,1],blv) && 
+            system.validOptions([0,1],sh) && 
+            system.validOptions([0,1],wl) 
+        ){
+            window.location.href = system.encodedURI("/diabetes/predict",`name=${name.replace(' ','+')}&age=${age}&bp=${bp}&glu=${glu}&fru=${fru}&blv=${blv}&slh=${sh}&wl=${wl}`,13);
+            return true;
+        }else{
+            alert("Please fill with correct values!");
+        }
+    }else{
+        alert("Please fill out the required fileds!");
+    }
+    return false;
+}
+</script>
+</html>

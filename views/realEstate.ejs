@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title version="1.0">XPredification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../public/App.css"/>
+    <link rel="icon" href="../public/logo1500.png"/>
+</head>
+<body onload="user();" class="not-notes">
+    <header id="header">
+        <%= header %>
+    </header>
+    <section id="home" class="workspace">
+        <div class="home-body flo">
+            <div class="home-body-left">
+                <h2>Real Estate Made Easy With Our XPredification</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, necessitatibus perferendis deserunt consequatur facilis, rem veritatis sit sequi officia incidunt nostrum iste voluptas in. Aperiam eaque saepe aut cupiditate ea omnis eligendi doloremque aspernatur culpa, accusamus facilis fuga mollitia sit molestiae laboriosam eius voluptatibus.</p>
+                <div class="flo">
+                    <button class="btn btn-voiture" onclick="route('./realEstate_pricePredict')">Predict Now &RightArrow;</button>
+                    <button class="btn btn-outline-voiture">Learn more..</button>
+                </div>
+                <div class="social-icon flo">
+                    <div class="round-icon"><i class="fa fa-facebook"></i></div>
+                    <div class="round-icon"><i class="fa fa-instagram"></i></div>
+                    <div class="round-icon"><i class="fa fa-github"></i></div>
+                    <div class="round-icon"><i class="fa fa-google"></i></div>
+                </div>
+            </div>
+            <div class="home-body-right">
+                <div class="images">
+                    <img src="../images/property-img2.webp" class="imgslid" alt="load"/>
+                    <img src="../images/property-img1.png" class="imgslid" alt="load"/>
+                    <img src="../images/property-img4.webp" class="imgslid" alt="load"/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <%= footer %>
+    </footer>
+</body>
+<script src="../public/App.js"></script>
+<script>
+    pageSet.push('header', 'footer');
+    currentPage.push('services');
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title version="1.0">XPredification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../public/App.css"/>
+    <link rel="icon" href="../public/logo1500.png"/>
+</head>
+<body>
+    <header id="header">
+        <%= header %>
+    </header>
+    <section class="workspace" id="diagnosis">
+        <div class="searchBox">
+            <div class="searchBar">
+                <div class="searchText">
+                    <input type="text" placeholder="Search XPredification" id="searchData" onkeyup="search_product('searchData','drop');">
+                </div>
+                <div class="searchIcon" title="Manually search service">
+                    <i class="fa fa-search"></i> Search
+                </div>
+            </div>
+        </div>
+        <ol class="search-product-data" id="productList">
+            <%= productList %>
+        </ol>
+        <div id="searchDataDOD">
+            <img src="../images/404.svg" alt="loading"/>
+        </div>
+    </section>
+</body>
+<script src="../public/App.js"></script>
+<script>
+    pageSet.push('header', 'productList');
+    currentPage.push('services');
+</script>
+</html>

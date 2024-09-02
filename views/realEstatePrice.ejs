@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title version="1.0">XPredification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../public/App.css"/>
+    <link rel="icon" href="../public/logo1500.png"/>
+</head>
+<body>
+    <header id="header">
+        <%= header %>
+    </header>
+    <section id="diabetes" class="workspace diseas">
+        <div class="related-diagnosis">
+            <% if (typeof relatedDiagnosis !== 'undefined'){ %>
+                <ul id="related-diagnosis">
+                    <%= relatedDiagnosis %>
+                </ul>
+            <% } %>
+        </div>
+        <div class="home-body flo">
+            <div class="home-body-left">
+                <form onsubmit="validateForm(event);">
+                    <div class="form-head">Real Estate Price Predict</div>
+                    <div class="form-body">
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="pro-type">Type</label>
+                                <select class="form-control" id="pro-type" required="true" onchange="checkOptions('pro-type');">
+                                    <option selected="true">Flat</option>
+                                    <option>House</option>
+                                </select>
+                                <small class="form-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, modi!</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="pro-loc">Location</label>
+                                <select class="form-control" id="pro-loc" required="true" onchange="checkOptions('pro-loc');">
+                                    <option selected="true">Kolkata</option>
+                                    <option>Delhi</option>
+                                    <option>Mumbai</option>
+                                    <option>Nagpur</option>
+                                </select>
+                                <small class="form-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsum!</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="pro-carpetArea">Carpet Area</label>
+                                <input type="number" class="form-control" id="pro-carpetArea" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-carpetArea',20000,10);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="pro-bed">Bed Room</label>
+                                <input type="number" class="form-control" id="pro-bed" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-bed',180,0);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="pro-kit">Kitchen</label>
+                                <input type="number" class="form-control" id="pro-kit" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-kit',180,0);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="pro-liv">Living Room</label>
+                                <input type="number" class="form-control" id="pro-liv" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-liv',180,0);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="pro-din">Dining Room</label>
+                                <input type="number" class="form-control" id="pro-din" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-din',180,0);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="pro-toi">Toilet</label>
+                                <input type="number" class="form-control" id="pro-toi" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-toi',180,0);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="pro-balc">Balcony</label>
+                                <input type="number" class="form-control" id="pro-balc" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-balc',180,0);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="pro-park">Parking Area</label>
+                                <select class="form-control" id="pro-park" name="blv" required="true" onchange="checkOptions('pro-park');">
+                                    <option selected="true">Public</option>
+                                    <option>Private</option>
+                                </select>
+                                <small class="form-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsum!</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="pro-floor">Floor</label>
+                                <input type="number" class="form-control" id="pro-floor" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-floor',180,0);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="pro-win">Windows</label>
+                                <input type="number" class="form-control" id="pro-win" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-win',180,0);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="pro-ent">Entrance No</label>
+                                <input type="number" class="form-control" id="pro-ent" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-floor',50,0);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="pro-sup">Supplience</label>
+                                <select class="form-control" id="pro-sup" name="blv" required="true" onchange="checkOptions('pro-sup');">
+                                    <option selected="true">Yes</option>
+                                    <option>No</option>
+                                </select>
+                                <small class="form-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsum!</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="pro-loan">Home Loan</label>
+                                <select class="form-control" id="pro-loan" name="blv" required="true" onchange="checkOptions('pro-loan');">
+                                    <option selected="true">Yes</option>
+                                    <option>No</option>
+                                </select>
+                                <small class="form-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsum!</small>
+                            </div>
+                            <div class="col form-group">
+                                <label for="pro-wall">Wall Thickness</label>
+                                <input type="number" class="form-control" id="pro-wall" placeholder="Enter Blood Pressure" required="true" onkeyup="checkRange('pro-wall',14,1);"/>
+                                <small class="form-text text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, tempora.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-group condition-btn">
+                        <button class="btn btn-danger" type="reset" onclick="route('/diagnosis');">Abort</button>
+                        <button class="btn btn-voiture" type="submit">Process</button>
+                    </div>
+                </form>
+            </div>
+            <div class="home-body-right">
+                <div class="image">
+                    <img src="../images/property-img2.webp" style="margin-top: 40px; width: 100%;" alt="load"/>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../public/App.js"></script>
+<script src="../public/default.min.js"></script>
+<script>
+    pageSet.push('header', 'related-diagnosis');
+    currentPage.push('services');
+
+function validateForm(event){
+    event.preventDefault();
+    var type = document.getElementById('pro-type').value=='Flat'?0:1;
+    var loc = document.getElementById('pro-loc').value;
+    var carpet = document.getElementById('pro-carpetArea').value;
+    var bed = document.getElementById('pro-bed').value;
+    var kit = document.getElementById('pro-kit').value;
+    var liv = document.getElementById('pro-liv').value;
+    var din = document.getElementById('pro-din').value;
+    var toi = document.getElementById('pro-toi').value;
+    var balc = document.getElementById('pro-balc').value;
+    var park = document.getElementById('pro-park').value;
+    var floor = document.getElementById('pro-floor').value;
+    var win = document.getElementById('pro-win').value;
+    var ent = document.getElementById('pro-ent').value;
+    var sup = document.getElementById('pro-sup').value=='No'?0:1;
+    var loan = document.getElementById('pro-loan').value=='No'?0:1;
+    var wall = document.getElementById('pro-wall').value;
+    if(
+        system.validLimit([0,180], [bed, kit, liv, din, toi, balc, park, floor, win, ent])
+    ){
+        fetch('/service/realEstate_pricePredict/process', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({data: [type, loc, carpet*1, bed*1, kit*1, liv*1, din*1, toi*1, balc*1, park, floor*1, win*1, ent*1, sup, loan, wall*1]})
+        }).then(response => response.json()).then(data => {
+            afterResponce(data);
+        }).catch(e=>console.log(e));
+        return true;
+    }else{
+        alert("Please fill with correct values!");
+    }
+    return false;
+}
+function afterResponce(data){
+    if(typeof data.error !== "undefined") return system.handelPyError(data.error);
+    let temp = `<section class="workspace modal fade" role="dialog" aria-hidden="true" id="output-modal">
+        ${data.layout}
+    </section>`;
+    document.body.innerHTML += temp;
+    document.querySelector(".time").textContent = `${(new Date().getDate())<10?'0'+(new Date().getDate()):(new Date().getDate())}/${(new Date().getMonth()+1)<10?'0'+(new Date().getMonth()+1):(new Date().getMonth()+1)}/${(new Date().getFullYear())<10?'0'+(new Date().getFullYear()):(new Date().getFullYear())} ${(new Date().getHours())<10?'0'+(new Date().getHours()):(new Date().getHours())}:${(new Date().getMinutes())<10?'0'+(new Date().getMinutes()):(new Date().getMinutes())}`;
+    document.getElementById('result').innerHTML = document.getElementById('result').textContent;
+    document.getElementById('feature').innerHTML = document.getElementById('feature').textContent;
+}
+</script>
+</html>

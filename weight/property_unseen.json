@@ -1,0 +1,7 @@
+[
+    {"id": 1, "type": 1, "location": "Jaipur", "carpet_area": 15600, "bed_room": 37, "kitchen": 1, "living_room": 1, "dining_room": 1, "toilet": 35, "balcony": 34, "parking_area": "private", "floor": 36, "window_no": 74, "entrance_no": 2, "supplience": 1, "home_loan": 1, "wall_thick": 8, "price": 29000000},  
+    {"id": 2, "type": 0, "location": "Lucknow", "carpet_area": 8400, "bed_room": 19, "kitchen": 1, "living_room": 1, "dining_room": 1, "toilet": 18, "balcony": 17, "parking_area": "public", "floor": 38, "window_no": 36, "entrance_no": 1, "supplience": 1, "home_loan": 1, "wall_thick": 6, "price": 7600000},  
+    {"id": 3, "type": 1, "location": "Nagpur", "carpet_area": 16000, "bed_room": 38, "kitchen": 1, "living_room": 1, "dining_room": 1, "toilet": 36, "balcony": 35, "parking_area": "private", "floor": 37, "window_no": 76, "entrance_no": 2, "supplience": 1, "home_loan": 1, "wall_thick": 8, "price": 30000000},  
+    {"id": 4, "type": 0, "location": "Indore", "carpet_area": 8600, "bed_room": 19, "kitchen": 1, "living_room": 1, "dining_room": 1, "toilet": 18, "balcony": 17, "parking_area": "public", "floor": 39, "window_no": 37, "entrance_no": 1, "supplience": 1, "home_loan": 1, "wall_thick": 6, "price": 7800000},  
+    {"id": 5, "type": 1, "location": "Thane", "carpet_area": 16400, "bed_room": 39, "kitchen": 1, "living_room": 1, "dining_room": 1, "toilet": 37, "balcony": 36, "parking_area": "private", "floor": 38, "window_no": 78, "entrance_no": 2, "supplience": 1, "home_loan": 1, "wall_thick": 8, "price": 31000000}
+]

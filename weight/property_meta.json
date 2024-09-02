@@ -1,0 +1,8 @@
+{
+    "head": ["Type", "Location", "Carpet Area", "Bed Room", "Kitchen", "Living Room", "Dining Room", "Toilet", "Balcony", "Parking Area", "Floor", "Windows", "Entrence", "Supplience", "Home Loan", "Wall Thickness"],
+    "unit": [null, null, "sq ft", null, null, null, null, null, null, null, null, null, null, null, null, "inch"],
+    "data_type": ["number", "String", "number", "number", "number", "number", "number", "number", "number", "String", "number", "number", "number", "number", "number", "number"],
+    "reference": ["type", "location", "carpet_area", "bed_room", "kitchen", "living_room", "dining_room", "toilet", "balcony", "parking_area", "floor", "window_no", "entrance_no", "supplience", "home_loan", "wall_thick", "price"],
+    "primary_key": "id",
+    "initials": null
+}
