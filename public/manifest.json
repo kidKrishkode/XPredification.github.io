@@ -1,0 +1,27 @@
+{
+  "short_name": "XPredification",
+  "name": "Create JPEN Web Sample",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "1500x1500 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo1500.png",
+      "type": "image/png",
+      "sizes": "1500x1500"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#22577aff",
+  "background_color": "#ffffff",
+  "hash": [["0","*z"],["1","*y"],["2","*x"],["3","*w"],["4","*v"],["5","*u"],["6","*t"],["7","*s"],["8","*r"],["9","*q"],["&",0],["+",1],["=",2],["-",3],["a",4],["e",5],["i",6],["n",7],["u",8],["g",9],["r","!h"],["l","!i"],["t","!j"]],
+  "antihash": [["&",0],["+",1],["=",2],["-",3],["a",4],["e",5],["i",6],["n",7],["u",8],["g",9],["r","!h"],["l","!i"],["t","!j"],["0","*z"],["1","*y"],["2","*x"],["3","*w"],["4","*v"],["5","*u"],["6","*t"],["7","*s"],["8","*r"],["9","*q"]],
+  "Related-service": [
+    {"name": "Real Estate Price Predict", "img": "../images/property-img5.png", "link": "./services/realEstate", "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, ducimus. Culpa soluta hic itaque debitis natus repudiandae inventore excepturi provident omnis quisquam qui nisi, temporibus porro alias corrupti iste fugit? Fuga nostrum", "related": []},
+    {"name": "Lorem ipsum set amet", "img": "../images/shape2.gif", "link": "./services/lorem", "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, ducimus. Culpa soluta hic itaque debitis natus repudiandae inventore excepturi provident omnis quisquam qui nisi, temporibus porro alias corrupti iste fugit? Fuga nostrum", "related": []}
+  ]
+}
+  
