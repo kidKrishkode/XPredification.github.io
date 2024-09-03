@@ -30,7 +30,7 @@ def predict_property_price(input_list):
 
     type_, location, carpet_area, bed_room, kitchen, living_room, dining_room, toilet, balcony, parking_area, floor, window_no, entrance_no, supplience, home_loan, wall_thick = input_list
 
-    Preprocessor.normalize(json_file_path, 'id')
+    # Preprocessor.normalize(json_file_path, 'id')
     
     memory = Preprocessor.mbr([type_, location, carpet_area, bed_room, kitchen, living_room, dining_room, toilet, balcony, parking_area, floor, window_no, entrance_no, supplience, home_loan, wall_thick], json_file_path, ['price'])
     if memory != None:
@@ -40,11 +40,12 @@ def predict_property_price(input_list):
         dataset = json.load(f)
     
     dataset = Preprocessor.synthesis(dataset, 'type', ['Flat','House'], [0,1])
+    dataset = Preprocessor.json_str_to_num(dataset, 'location')
     dataset = Preprocessor.synthesis(dataset, 'parking_area', ['public','private'], [0,1])
     dataset = Preprocessor.synthesis(dataset, 'supplience', ['No','Yes'], [0,1])
     dataset = Preprocessor.synthesis(dataset, 'home_loan', ['No','Yes'], [0,1])
 
-    X = np.array([[data['type'], data['carpet_area'], data['bed_room'], data['kitchen'], data['living_room'], data['dining_room'], data['toilet'], data['balcony'], data['parking_area'], data['floor'], data['window_no'], data['entrance_no'], data['supplience'], data['home_loan'], data['wall_thick']] for data in dataset])
+    X = np.array([[data['type'], data['location'], data['carpet_area'], data['bed_room'], data['kitchen'], data['living_room'], data['dining_room'], data['toilet'], data['balcony'], data['parking_area'], data['floor'], data['window_no'], data['entrance_no'], data['supplience'], data['home_loan'], data['wall_thick']] for data in dataset])
     y = np.array([target['price'] for target in dataset])
 
     scaler = StandardScaler()
@@ -53,14 +54,14 @@ def predict_property_price(input_list):
     tree_reg = DecisionTreeRegressor(random_state=42)
     tree_reg.fit(X_scaled, y)
 
-    unknown_input = [type_, carpet_area, bed_room, kitchen, living_room, dining_room, toilet, balcony, parking_area, floor, window_no, entrance_no, supplience, home_loan, wall_thick]
+    unknown_input = [type_, Preprocessor.str_to_num(location), carpet_area, bed_room, kitchen, living_room, dining_room, toilet, balcony, parking_area, floor, window_no, entrance_no, supplience, home_loan, wall_thick]
     unknown_input = Preprocessor.synthesis([unknown_input], 'parking_area', ['Public','Private'], [0,1])
 
     unknown_input_scaled = scaler.transform(np.array(unknown_input[0]).reshape(1, -1))
     predicted_price = tree_reg.predict(unknown_input_scaled)[0]
 
-    Preprocessor.ETL([len(dataset)+1, 'Flat' if type_==0 else 'House', location, int(carpet_area), int(bed_room), int(kitchen), int(living_room), int(dining_room), int(toilet, balcony), int(parking_area), int(floor), int(window_no), int(entrance_no), 'No' if supplience==0 else 'Yes', 'No' if home_loan==0 else 'Yes', int(wall_thick)], [int(predicted_price)], json_file_path)
-    
+    Preprocessor.ETL([len(dataset)+1, 'Flat' if type_==0 else 'House', location, int(carpet_area), int(bed_room), int(kitchen), int(living_room), int(dining_room), int(toilet), int(balcony), parking_area, int(floor), int(window_no), int(entrance_no), 'No' if supplience==0 else 'Yes', 'No' if home_loan==0 else 'Yes', int(wall_thick)], [int(predicted_price)], json_file_path)
+
     return predicted_price
 
 def property_report(user_input):

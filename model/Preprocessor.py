@@ -95,3 +95,11 @@ def synthesis(dataset, col_name, options, musk):
                     dataset[0][i] = musk[j]
     
     return dataset
+
+def str_to_num(s):
+    return int(''.join(str(ord(c)) for c in s))
+
+def json_str_to_num(dataset, col_name):
+    for i in range (len(dataset)):
+        dataset[i][col_name] = str_to_num(dataset[i][col_name])
+    return dataset
